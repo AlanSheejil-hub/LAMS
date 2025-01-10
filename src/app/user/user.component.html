@@ -1,0 +1,182 @@
+<mat-tab-group #tabGroup>
+  <mat-tab label="Personal Info">
+    <form [formGroup]="Form">
+      <div class="personaldetails">
+        <div class="firstname">
+          <p>Firstname</p>
+
+          <mat-form-field class="userIn" appearance="outline">
+            <mat-label>Enter firstname</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+        </div>
+        <div class="lastname">
+          <p>Lastname</p>
+          <mat-form-field class="passIn" appearance="outline">
+            <mat-label>Enter lastname</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+        </div>
+        <div class="email">
+          <p>Email</p>
+          <mat-form-field appearance="outline" class="passIn">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Enter email"
+              type="email"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="footerexp">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button
+          mat-flat-button
+          class="footerbtn"
+          type="button"
+          (click)="tabGroup.selectedIndex = 1"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Employment">
+    <form [formGroup]="Form">
+      <div class="personaldetails">
+        <div class="firstname">
+          <p>Date of Joining</p>
+          <mat-form-field class="passIn" appearance="outline">
+            <mat-label>yyyy/mm/dd</mat-label>
+            <input matInput formControlName="DOJ" />
+          </mat-form-field>
+        </div>
+        <div class="pass">
+          <p>Designation</p>
+          <mat-form-field class="passIn" appearance="outline">
+            <mat-label>Select Designation</mat-label>
+            <mat-select formControlName="designation">
+              @for (deg of designationOptions; track $index) {
+              <mat-option [value]="deg.id">{{ deg.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="email">
+          <p>Manager</p>
+          <mat-form-field class="userIn" appearance="outline">
+            <mat-label>Enter Reporting Manager</mat-label>
+            <mat-select formControlName="manager">
+              @for (man of managerOptions; track $index) {
+              <mat-option [value]="man.id">{{
+                man["employee.username"]
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="personaldetails">
+        <div class="firstname">
+          <p>Department</p>
+          <mat-form-field class="passIn" appearance="outline">
+            <mat-label>Select Department</mat-label>
+            <mat-select
+              [(ngModel)]="selectedDepartment"
+              formControlName="department"
+            >
+              @for (obj of departmentOptions; track $index) {
+              <mat-option [value]="obj.id">{{ obj.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="username">
+          <p>Date of Birth</p>
+          <mat-form-field class="userIn" appearance="outline">
+            <mat-label>yyyy/mm/dd</mat-label>
+            <input matInput formControlName="DOB" />
+          </mat-form-field>
+        </div>
+        <div class="email">
+          <p>Phone Number</p>
+          <mat-form-field class="passIn" appearance="outline">
+            <mat-label>Enter Phone Number</mat-label>
+            <input matInput formControlName="mobile" type="number" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="footerexp">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button
+          mat-flat-button
+          class="footerbtn"
+          type="button"
+          (click)="tabGroup.selectedIndex = 2"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Account Details">
+    <form [formGroup]="Form">
+      <div class="personaldetails">
+        <div class="firstname">
+          <p>Username</p>
+          <mat-form-field class="userIn" appearance="outline">
+            <mat-label>Enter your username</mat-label>
+            <input matInput formControlName="username" />
+          </mat-form-field>
+        </div>
+        <div class="pass">
+          <p>Password</p>
+          <mat-form-field class="passIn" appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{
+                hide() ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="email">
+          <p>Role</p>
+          <mat-form-field class="roleIn" appearance="outline">
+            <mat-label>Select role</mat-label>
+            <mat-select [(ngModel)]="selectedValue" formControlName="empRole">
+              @for (item of dropdownOptions; track $index) {
+              <mat-option [value]="item.id">{{ item.name }}</mat-option>
+
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="footerexp">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button class="footerbtn" (click)="submit()">
+          <mat-icon>add</mat-icon>Add User
+        </button>
+      </div>
+    </form>
+  </mat-tab>
+</mat-tab-group>

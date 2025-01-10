@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-card class="login-container">
+    <img class="image" src="/assets/logo.png" alt="Riota" />
+    <mat-card-title class="title">LAMS</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            type="text"
+            required
+            [(ngModel)]="user"
+            name="username"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            required
+            [(ngModel)]="password"
+            name="password"
+          />
+        </mat-form-field>
+
+        <button mat-flat-button class="btn" (click)="onSubmit()">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

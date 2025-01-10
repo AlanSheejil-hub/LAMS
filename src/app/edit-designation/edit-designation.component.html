@@ -1,0 +1,23 @@
+<div class="content">
+  Edit Designation: {{ data.id }}
+  <mat-form-field appearance="outline">
+    <mat-label>Designation</mat-label>
+    <input matInput placeholder="ex: IT" type="text" [(ngModel)]="name" />
+    @if (name) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="name = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+    }
+  </mat-form-field>
+  <div class="subcontent">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-flat-button
+      (click)="edit()"
+      [disabled]="!isInputValid()"
+      class="btn"
+    >
+      Edit Designation
+    </button>
+  </div>
+</div>

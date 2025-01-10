@@ -1,0 +1,102 @@
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  background-color: white !important;
+}
+
+.start {
+  display: flex;
+  flex-direction: row;
+}
+
+.logo {
+  padding-right: 20px;
+}
+
+.logout {
+  color: white !important;
+  cursor: pointer;
+}
+
+.logoutbtn {
+  margin-right: 10px;
+  background-color: #47c7ef;
+}
+
+.drawer {
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+::ng-deep.mat-drawer {
+  background-color: white !important;
+}
+
+.dbbutton {
+  width: 180px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #47c7ef !important;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.regbutton {
+  width: 180px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #47c7ef !important;
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.dashboard {
+  padding: 30px 20px 20px 90px;
+}
+
+.Regularize {
+  padding: 10px 20px 20px 90px;
+}
+
+.dbbutton:hover {
+  background-color: lightcyan !important;
+  color: black;
+}
+
+.regbutton:hover {
+  background-color: lightcyan !important;
+  color: black;
+}
+
+.logoutbtn:hover {
+  background-color: lightcyan;
+}
+
+.logout:hover {
+  color: black !important;
+}
+
+.menu {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.menubtn {
+  padding-left: 10px;
+}
+
+.mat-mdc-button:not(:disabled) {}

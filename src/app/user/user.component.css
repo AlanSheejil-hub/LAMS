@@ -1,0 +1,55 @@
+.personaldetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.upperdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.passIn {
+  width: 170px !important;
+}
+
+.userIn {
+  width: 170px !important;
+}
+
+.roleIn {
+  width: 170px !important;
+}
+
+.footerexp {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-right: 10px;
+  padding-bottom: 20px;
+}
+.footerbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #3d52a0 !important;
+}
+
+.firstname {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.email {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.doj {
+  padding-left: 10px;
+}

@@ -1,0 +1,31 @@
+<div class="content">
+  <h6>Create {{ data.title }}</h6>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ data.title }}</mat-label>
+      <input
+        matInput
+        placeholder="ex: Management"
+        type="text"
+        [(ngModel)]="name"
+      />
+      @if (name) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="name = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+      }
+    </mat-form-field>
+  </div>
+
+  <div class="subcontent">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-flat-button
+      (click)="create()"
+      [disabled]="!isInputValid()"
+      class="btn"
+    >
+      Create {{ data.title }}
+    </button>
+  </div>
+</div>

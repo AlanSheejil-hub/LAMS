@@ -1,0 +1,132 @@
+<div class="maincontent">
+  <mat-card class="maincard">
+    <mat-toolbar class="header">
+      <span class="title"><mat-icon class="shield">shield</mat-icon>Work</span>
+    </mat-toolbar>
+
+    <div class="searchBar">
+      <mat-form-field class="select-icon" appearance="outline">
+        <mat-label>Select by</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option value="id">Id</mat-option>
+          <mat-option value="name">Work</mat-option>
+          <mat-option value="createdBy">CreatedBy</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="search-icon" appearance="outline">
+        <button
+          matPrefix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="onClickSearch()"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+        <input
+          matInput
+          type="text"
+          name="value"
+          [(ngModel)]="value"
+          placeholder="Search users..."
+          (keyup.enter)="onClickSearch()"
+        />
+        @if (value) {
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="onRefresh()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="sort-icon" appearance="outline">
+        <mat-label>Sort by</mat-label>
+        <mat-select
+          [(ngModel)]="selected"
+          name="selected"
+          (selectionChange)="onSort()"
+        >
+          <mat-option value="id">Id</mat-option>
+          <mat-option value="name">Work</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="sort">
+        <button mat-icon-button (click)="onFilter()">
+          <mat-icon>sort</mat-icon>
+        </button>
+      </div>
+      <div class="refresh">
+        <button mat-icon-button (click)="onRefresh()">
+          <mat-icon>refresh</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="table-container">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Work</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="createdByUser.username">
+            <th mat-header-cell *matHeaderCellDef>CreatedBy</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element["createdByUser.username"] }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+              <a mat-icon-button (click)="editworkclick(element)">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a mat-icon-button (click)="deleteclick(element)">
+                <mat-icon>delete</mat-icon>
+              </a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-toolbar class="footer">
+          <div class="showuser">
+            <mat-paginator
+              #paginator
+              (page)="handlePage($event)"
+              [length]="pageCount"
+              [pageSize]="pageIndex"
+              [pageSizeOptions]="[pageLimit, 10, 25, 100]"
+              [pageIndex]=""
+              showFirstLastButtons="true"
+              aria-label="Select page"
+              class="pagi"
+            >
+            </mat-paginator>
+          </div>
+        </mat-toolbar>
+      </div>
+    </div>
+  </mat-card>
+
+  <button
+    mat-fab
+    color="primary"
+    (click)="clickAddWork()"
+    aria-label="FAB"
+    class="fab"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

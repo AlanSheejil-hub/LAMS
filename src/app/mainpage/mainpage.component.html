@@ -1,0 +1,60 @@
+<div class="parent">
+  <div class="topbar">
+    <div class="start">
+      <button class="menu" mat-button (click)="drawer.toggle()">
+        <mat-icon id="menubtn">menu</mat-icon>
+      </button>
+      <div class="logo">
+        <img src="/assets/logo.png" alt="Logo" height="37px" width="48px" />
+      </div>
+    </div>
+
+    <button class="logoutbtn" mat-button (click)="Onlogout()">
+      <mat-icon id="logout">power_settings_new</mat-icon>
+    </button>
+  </div>
+
+  <mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #drawer mode="side" opened>
+      @for (button of buttons; track $index) {
+      <div class="btn">
+        <button
+          class="mainbtn"
+          (click)="OnclickedBtn(button)"
+          [class.selected]="btnClicked === button.isClicked"
+        >
+          <mat-icon class="btnicon">{{ button.icons }}</mat-icon>
+          <div class="text">
+            {{ button.label }}
+          </div>
+
+          <mat-icon>{{ button.endIcon }}</mat-icon>
+        </button>
+      </div>
+
+      @if (button.isOpen==true && button.children && button.children.length > 0)
+      { @for (child of button.children; track $index) {
+
+      <div class="btn">
+        <button
+          class="mainbtn"
+          (click)="ChildBtn(child.label)"
+          [class.selected]="btnClicked === child.isClicked"
+        >
+          <mat-icon class="btnicon">{{ child.icons }}</mat-icon>
+          <div class="childText">
+            {{ child.label }}
+          </div>
+        </button>
+      </div>
+
+      } } }
+    </mat-drawer>
+
+    <mat-drawer-content>
+      <div class="main-content">
+        <router-outlet> </router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

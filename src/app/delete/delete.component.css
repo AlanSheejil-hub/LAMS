@@ -1,0 +1,14 @@
+.content {
+  display: flex;
+
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.btn {
+  margin-left: 10px;
+}
